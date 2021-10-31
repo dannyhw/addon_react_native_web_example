@@ -1,0 +1,56 @@
+{
+  "name": "react_native_web_example",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "dependencies": {
+    "react": "17.0.2",
+    "react-native": "0.66.1",
+    "react-native-reanimated": "^2.2.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/runtime": "^7.12.5",
+    "@react-native-community/eslint-config": "^2.0.0",
+    "@storybook/addon-actions": "^6.4.0-beta.23",
+    "@storybook/addon-essentials": "^6.4.0-beta.23",
+    "@storybook/addon-links": "^6.4.0-beta.23",
+    "@storybook/addon-react-native-web": "0.0.2-canary.2.a8a8f3d.0",
+    "@storybook/react": "^6.4.0-beta.23",
+    "@types/jest": "^26.0.23",
+    "@types/react-native": "^0.65.0",
+    "@types/react-test-renderer": "^17.0.1",
+    "babel-jest": "^26.6.3",
+    "babel-loader": "^8.2.3",
+    "babel-plugin-react-native-web": "^0.17.5",
+    "eslint": "^7.14.0",
+    "jest": "^26.6.3",
+    "metro-react-native-babel-preset": "^0.66.2",
+    "react-dom": "^17.0.2",
+    "react-native-web": "^0.17.5",
+    "react-test-renderer": "17.0.2",
+    "typescript": "^3.8.3"
+  },
+  "resolutions": {
+    "@types/react": "^17"
+  },
+  "jest": {
+    "preset": "react-native",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  }
+}
