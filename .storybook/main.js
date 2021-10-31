@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   stories: ['../components/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
   addons: [
@@ -29,6 +31,7 @@ module.exports = {
         ),
       ],
     });
+    return config;
   },
   framework: '@storybook/react',
 };

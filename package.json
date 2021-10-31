@@ -17,7 +17,7 @@
     "react-native": "0.66.1",
     "react-native-gesture-handler": "^1.10.3",
     "react-native-paper": "^4.9.2",
-    "react-native-reanimated": "^2.2.3",
+    "react-native-reanimated": "next",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-svg": "^12.1.1",
     "react-native-vector-icons": "^9.0.0",
