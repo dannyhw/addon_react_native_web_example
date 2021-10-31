@@ -1,115 +1,62 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/react-native-community/react-native-template-typescript
- *
- * @format
- */
-
 import React from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
-
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-const Section: React.FC<{
-  title: string;
-}> = ({children, title}) => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
+import {SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {Draggable} from './components/libraries/Gesture/Draggable/Draggable';
+import {AppBar} from './components/libraries/NativeBase/AppBar';
+import {Card} from './components/libraries/Paper/Card';
+import {Box} from './components/libraries/Reanimated/Box';
+import {Provider as PaperProvider, DefaultTheme} from 'react-native-paper';
+import {NativeBaseProvider} from 'native-base';
 
 const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <NativeBaseProvider>
+      <PaperProvider theme={DefaultTheme}>
+        <SafeAreaView style={styles.container}>
+          <AppBar />
+          <ScrollView>
+            <View style={styles.center}>
+              <Box />
+              <Draggable style={styles.draggable}>
+                <Text>Drag me</Text>
+              </Draggable>
+              <View style={styles.cardContainer}>
+                <Card
+                  content="test content"
+                  onCancel={() => null}
+                  onConfirm={() => null}
+                  title="test"
+                />
+              </View>
+            </View>
+          </ScrollView>
+        </SafeAreaView>
+      </PaperProvider>
+    </NativeBaseProvider>
   );
 };
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  container: {
+    ...StyleSheet.absoluteFillObject,
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  draggable: {
+    margin: 8,
+    zIndex: 2,
+    backgroundColor: 'white',
+    padding: 8,
+    borderRadius: 8,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 1.41,
+
+    elevation: 2,
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
+  cardContainer: {width: '90%'},
+  center: {alignItems: 'center'},
 });
 
 export default App;
