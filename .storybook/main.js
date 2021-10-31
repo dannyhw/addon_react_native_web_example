@@ -14,5 +14,21 @@ module.exports = {
       },
     },
   ],
+  webpackFinal: config => {
+    config.module.rules.push({
+      test: /\.ttf$/,
+      loader: 'url-loader',
+      include: [
+        path.resolve(
+          __dirname,
+          '../node_modules/react-native-vector-icons/MaterialCommunityIcons.js',
+        ),
+        path.resolve(
+          __dirname,
+          '../node_modules/react-native-vector-icons/MaterialIcons.js',
+        ),
+      ],
+    });
+  },
   framework: '@storybook/react',
 };

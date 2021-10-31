@@ -1,4 +1,3 @@
-import React from 'react';
 import {ComponentMeta} from '@storybook/react';
 import BoxStories from './Box.stories';
 import {AppBar} from './AppBar';

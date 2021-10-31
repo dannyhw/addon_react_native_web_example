@@ -1,11 +1,12 @@
+import {NativeBaseProvider} from 'native-base';
 import React from 'react';
 import {SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
 import {Draggable} from './components/libraries/Gesture/Draggable/Draggable';
 import {AppBar} from './components/libraries/NativeBase/AppBar';
 import {Card} from './components/libraries/Paper/Card';
 import {Box} from './components/libraries/Reanimated/Box';
-import {Provider as PaperProvider, DefaultTheme} from 'react-native-paper';
-import {NativeBaseProvider} from 'native-base';
+import {Icon} from './components/libraries/VectorIcons/Icon';
 
 const App = () => {
   return (
@@ -28,6 +29,8 @@ const App = () => {
                 />
               </View>
             </View>
+
+            <Icon name="account" />
           </ScrollView>
         </SafeAreaView>
       </PaperProvider>
