@@ -11,6 +11,8 @@ module.exports = {
         modulesToTranspile: [
           'react-native-reanimated',
           'react-native-vector-icons',
+          'react-native-ui-lib',
+          'react-native-color',
         ],
         babelPlugins: ['react-native-reanimated/plugin'],
       },
