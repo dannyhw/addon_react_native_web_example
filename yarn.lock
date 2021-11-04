@@ -2768,10 +2768,10 @@
     regenerator-runtime "^0.13.7"
     ts-dedent "^2.0.0"
 
-"@storybook/addon-react-native-web@0.0.2-canary.2.a8a8f3d.0":
-  version "0.0.2-canary.2.a8a8f3d.0"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-react-native-web/-/addon-react-native-web-0.0.2-canary.2.a8a8f3d.0.tgz#a73e9d9665ea0319ffab530b385ad0071d2f16a8"
-  integrity sha512-t5uynDUV1q1RYVWeZd0h6/4Oh1PspqQ2RBBCSrM4SPdqK08OS5NZ+AXxfm8aEqqjOhfSNDX5IwRN/xts+KbbAw==
+"@storybook/addon-react-native-web@0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-react-native-web/-/addon-react-native-web-0.0.2.tgz#95974da9a4322932bc6566d3ec22a78113e0666a"
+  integrity sha512-s67qQilY0TlrCcyEwAQlEO+yZ+VTtc5c2SD1VXFkCNu3TCm3KdIEusSJBUw2xcwOFj+/s+0BzmTSeDZURa2u8Q==
 
 "@storybook/addon-toolbars@6.4.0-beta.23":
   version "6.4.0-beta.23"

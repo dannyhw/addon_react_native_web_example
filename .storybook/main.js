@@ -19,19 +19,17 @@ module.exports = {
     },
   ],
   webpackFinal: config => {
+    const vectorIconsPath = require.resolve('react-native-vector-icons');
+    const toFind = 'node_modules/react-native-vector-icons/';
+    const actualPath = vectorIconsPath.substring(
+      0,
+      vectorIconsPath.indexOf(toFind) + toFind.length,
+    );
+    const icons = new RegExp(`${actualPath}/.*`);
     config.module.rules.push({
       test: /\.ttf$/,
       loader: 'url-loader',
-      include: [
-        path.resolve(
-          __dirname,
-          '../node_modules/react-native-vector-icons/MaterialCommunityIcons.js',
-        ),
-        path.resolve(
-          __dirname,
-          '../node_modules/react-native-vector-icons/MaterialIcons.js',
-        ),
-      ],
+      include: [icons],
     });
     return config;
   },
