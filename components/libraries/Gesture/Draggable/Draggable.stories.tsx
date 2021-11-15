@@ -9,12 +9,7 @@ export default {
   component: Draggable,
   decorators: [
     Story => (
-      <View
-        style={{
-          ...StyleSheet.absoluteFillObject,
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}>
+      <View style={styles.container}>
         <Story />
       </View>
     ),
@@ -26,3 +21,11 @@ export const Basic = {
     children: <Text>Drag me around</Text>,
   },
 };
+
+const styles = StyleSheet.create({
+  container: {
+    ...StyleSheet.absoluteFillObject,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});

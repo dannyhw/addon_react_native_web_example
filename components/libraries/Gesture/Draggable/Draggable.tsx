@@ -39,6 +39,7 @@ export const Draggable = ({children, style}: DraggableProps) => {
     'worklet';
     tapActive.value = false;
   };
+
   const panGestureEvent = useAnimatedGestureHandler<
     PanGestureHandlerGestureEvent,
     ContextType
@@ -102,6 +103,7 @@ export const Draggable = ({children, style}: DraggableProps) => {
     </PanGestureHandler>
   );
 };
+
 const styles = StyleSheet.create({
   box: {
     display: 'flex',
