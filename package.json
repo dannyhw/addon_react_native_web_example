@@ -35,7 +35,7 @@
     "@storybook/addon-actions": "^6.4.0-rc.1",
     "@storybook/addon-essentials": "^6.4.0-rc.1",
     "@storybook/addon-links": "^6.4.0-rc.1",
-    "@storybook/addon-react-native-web": "0.0.7-canary.11.34446b7.0",
+    "@storybook/addon-react-native-web": "0.0.8-canary.13.d8a51bb.0",
     "@storybook/react": "^6.4.0-rc.1",
     "@types/jest": "^26.0.23",
     "@types/react-native": "^0.65.0",
