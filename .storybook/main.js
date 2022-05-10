@@ -11,8 +11,7 @@ module.exports = {
         modulesToTranspile: [
           'react-native-reanimated',
           'react-native-vector-icons',
-          'react-native-ui-lib',
-          'react-native-color',
+          '@react-native-community/datetimepicker',
         ],
         babelPlugins: ['react-native-reanimated/plugin'],
       },

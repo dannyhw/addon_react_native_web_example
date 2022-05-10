@@ -2,7 +2,7 @@ import {NativeBaseProvider} from 'native-base';
 import React from 'react';
 import {SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
-import {TextField} from 'react-native-ui-lib';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {Draggable} from './components/libraries/Gesture/Draggable/Draggable';
 import {AppBar} from './components/libraries/NativeBase/AppBar';
 import {Card} from './components/libraries/Paper/Card';
@@ -11,9 +11,9 @@ import {Icon} from './components/libraries/VectorIcons/Icon';
 
 const App = () => {
   return (
-    <NativeBaseProvider>
-      <PaperProvider theme={DefaultTheme}>
-        <SafeAreaView style={styles.container}>
+    <GestureHandlerRootView style={StyleSheet.absoluteFillObject}>
+      <NativeBaseProvider>
+        <PaperProvider theme={DefaultTheme}>
           <AppBar />
           <ScrollView>
             <View style={styles.center}>
@@ -30,14 +30,11 @@ const App = () => {
                 />
               </View>
               <Icon name="account" />
-              <View style={styles.textContainer}>
-                <TextField />
-              </View>
             </View>
           </ScrollView>
-        </SafeAreaView>
-      </PaperProvider>
-    </NativeBaseProvider>
+        </PaperProvider>
+      </NativeBaseProvider>
+    </GestureHandlerRootView>
   );
 };
 
@@ -51,6 +48,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     padding: 8,
     borderRadius: 8,
+    zIndex: 100,
   },
   cardContainer: {width: '90%'},
   center: {alignItems: 'center'},
