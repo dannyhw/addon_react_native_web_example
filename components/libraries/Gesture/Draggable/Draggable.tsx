@@ -1,6 +1,9 @@
 import React, {ReactNode, useRef} from 'react';
 import {Platform, StyleProp, StyleSheet, ViewStyle} from 'react-native';
 import {
+  Gesture,
+  GestureDetector,
+  GestureHandlerRootView,
   PanGestureHandler,
   PanGestureHandlerGestureEvent,
   TapGestureHandler,
@@ -26,81 +29,42 @@ type ContextType = {
 export const Draggable = ({children, style}: DraggableProps) => {
   const x = useSharedValue(0);
   const y = useSharedValue(0);
-  const tapActive = useSharedValue(false);
-  const panActive = useSharedValue(false);
-  const tapRef = useRef();
-  const panRef = useRef();
-  const endPan = () => {
-    'worklet';
-    panActive.value = false;
-  };
+  const isPressed = useSharedValue(false);
 
-  const endTap = () => {
-    'worklet';
-    tapActive.value = false;
-  };
-
-  const panGestureEvent = useAnimatedGestureHandler<
-    PanGestureHandlerGestureEvent,
-    ContextType
-  >({
-    onStart: (_, context) => {
-      context.x = x.value;
-      context.y = y.value;
-      panActive.value = true;
-    },
-    onActive: (event, context) => {
-      x.value = event.translationX + context.x;
-      y.value = event.translationY + context.y;
-    },
-    onEnd: () => {
+  const gesture = Gesture.Pan()
+    .onBegin(() => {
+      isPressed.value = true;
+    })
+    .onUpdate(event => {
+      x.value = event.translationX;
+      y.value = event.translationY;
+    })
+    .onEnd(() => {
       x.value = withSpring(0);
       y.value = withSpring(0);
-      endPan();
-    },
-    onFinish: endPan,
-    onCancel: endPan,
-    onFail: endPan,
-  });
+    })
+    .onFinalize(() => {
+      isPressed.value = false;
+    });
 
-  const panStyle = Platform.select({
-    android: {transform: []}, // currently useanimated style is crashing for android
-    default: useAnimatedStyle(() => {
-      return {
-        transform: [
-          {scale: withTiming(tapActive.value || panActive.value ? 1.2 : 1)},
-          {
-            translateX: x.value,
-          },
-          {
-            translateY: y.value,
-          },
-        ],
-      };
-    }, [x, y, tapActive, panActive]),
-  });
+  const panStyle = useAnimatedStyle(() => {
+    return {
+      transform: [
+        {scale: withTiming(isPressed.value ? 1.2 : 1)},
+        {translateX: x.value},
+        {translateY: y.value},
+      ],
+    };
+  }, [x, y, isPressed]);
 
   return (
-    <PanGestureHandler
-      ref={panRef}
-      onGestureEvent={panGestureEvent}
-      simultaneousHandlers={tapRef}>
+    <GestureDetector gesture={gesture}>
       <Animated.View style={styles.z}>
-        <TapGestureHandler
-          simultaneousHandlers={panRef}
-          ref={tapRef}
-          onBegan={() => {
-            tapActive.value = true;
-          }}
-          onEnded={endTap}
-          onFailed={endTap}
-          onCancelled={endTap}>
-          <Animated.View style={[styles.box, panStyle, style]}>
-            {children}
-          </Animated.View>
-        </TapGestureHandler>
+        <Animated.View style={[styles.box, panStyle, style]}>
+          {children}
+        </Animated.View>
       </Animated.View>
-    </PanGestureHandler>
+    </GestureDetector>
   );
 };
 
